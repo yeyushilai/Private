@@ -25,13 +25,13 @@ def index():
 
 @app.route('/service/', methods=["GET"])
 def service_get():
-    params =  request.args
+    params = request.args
     res = dict(aa=params.get("aa"), bb=params.get("bb"))
     return response(res)
 
+
 @app.route('/service/', methods=["POST"])
 def service_post():
-
     params = dict()
     if request.form:
         params = request.form
@@ -49,7 +49,8 @@ def main():
     port = 8888
     addr = (host, port)
 
-    msg = "Server Running on http://{host}:{port}/".format(host=host, port=port)
+    msg = "Server Running on http://{host}:{port}/".format(host=host,
+                                                           port=port)
     print msg
     WSGIServer(addr, app).serve_forever()
 
